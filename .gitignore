@@ -1,1 +1,6 @@
 *.json
+app-ui.py
+test.py
+ui.py
+reviews/*
+mood-singer.ui

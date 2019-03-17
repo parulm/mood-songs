@@ -29,13 +29,13 @@ def print_result(annotations):
     return 0
 
 
-def analyze(movie_review_filename):
+def analyze(content):
     """Run a sentiment analysis request on text within a passed filename."""
     client = language.LanguageServiceClient(credentials=credentials)
 
-    with open(movie_review_filename, 'r') as review_file:
+    #with open(movie_review_filename, 'r') as review_file:
         # Instantiates a plain text document.
-        content = review_file.read()
+    #    content = review_file.read()
     print(content)
 
     document = types.Document(
@@ -60,7 +60,10 @@ if __name__ == '__main__':
         help='The filename of the movie review you\'d like to analyze.')
     args = parser.parse_args()
     #movie_review_filename = 'reviews/bladerunner-neg.txt'
-    sentiment = analyze(args.movie_review_filename)
+    with open(args.movie_review_filename, 'r') as review_file:
+        # Instantiates a plain text document.
+    	content = review_file.read()
+    sentiment = analyze(content)
     #print(sentiment.score, sentiment.magnitude)
     r = random.randint(1,4)
     print(r)
